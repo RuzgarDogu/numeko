@@ -1,16 +1,21 @@
 <?php
 class Auth
 {
-    
+
     public static function handleLogin()
     {
-        @session_start();
-        $logged = $_SESSION['loggedIn'];
-        if ($logged == false) {
-            session_destroy();
-            header('location: ../login');
-            exit;
+
+        // $logged = $_SESSION['loggedIn'];
+        // echo $logged;
+        if (!isset($_SESSION)) {
+          @session_start();
         }
+
+        // if ($logged == false) {
+        //     session_destroy();
+        //     header('location: ../login');
+        //     exit;
+        // }
     }
-    
+
 }
