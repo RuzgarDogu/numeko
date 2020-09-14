@@ -4,7 +4,7 @@ class Dashboard extends Controller {
 
     function __construct() {
         parent::__construct();
-        Auth::handleLogin();
+        // Auth::handleLogin();
         $this->view->js = array('dashboard/js/dashboard.js');
     }
 

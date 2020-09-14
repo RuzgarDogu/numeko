@@ -20,6 +20,9 @@
   },
   "homepage": "https://github.com/RuzgarDogu/numeko#readme",
   "dependencies": {
-    "jquery": "^3.5.1"
+    "bootstrap": "^4.5.2",
+    "jquery": "^3.5.1",
+    "three": "^0.120.1",
+    "vanta": "^0.5.19"
   }
 }

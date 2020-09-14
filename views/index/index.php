@@ -1,5 +1,5 @@
 <h1>Index</h1>
 
 <p>
-This is the main page welcome!
+This is the welcome page
 </p>

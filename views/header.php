@@ -3,6 +3,7 @@
 <head>
     <title>Test</title>
     <link rel="stylesheet" href="<?php echo URL; ?>public/css/main.css" />
+    <link rel="stylesheet" href="<?php echo URL; ?>node_modules/bootstrap/dist/css/bootstrap.min.css" />
 
     <?php
     if (isset($this->css))
@@ -15,6 +16,7 @@
     ?>
 
     <script type="text/javascript" src="<?php echo URL; ?>node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="<?php echo URL; ?>node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="<?php echo URL; ?>public/js/main.js"></script>
 
     <?php
