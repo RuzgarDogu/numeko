@@ -1,0 +1,25 @@
+{
+  "name": "numeko",
+  "version": "0.1.2",
+  "description": "Numeko CRM",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RuzgarDogu/numeko.git"
+  },
+  "keywords": [
+    "Numeko"
+  ],
+  "author": "RuzgarDogu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RuzgarDogu/numeko/issues"
+  },
+  "homepage": "https://github.com/RuzgarDogu/numeko#readme",
+  "dependencies": {
+    "jquery": "^3.5.1"
+  }
+}
