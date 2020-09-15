@@ -13,6 +13,8 @@
 
 // define('HASH_PASSWORD_KEY', 'Wr15oR56');
 
+// Not ekledim Onurcum
+
 const URL = 'https://numeko.bar/';
 const CORE = 'Core/';
 const CONTROLLERYOLU = 'controllers/';
