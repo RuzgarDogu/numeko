@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Test</title>
+    <title>Honeywell Academy</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="<?php echo URL; ?>node_modules/@fortawesome/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="<?php echo URL; ?>node_modules/bootstrap/dist/css/bootstrap.min.css" />
@@ -52,13 +52,14 @@
           <div class="row mb-2">
             <div class="col-sm-6">
               <h1 class="m-0 text-dark">
-                <?php isset($this->sayfaAdi) ? $this->sayfaAdi : "Böyle bir sayfa yok" ?>
+                <?php $sayfaadi = isset($this->sayfaAdi) ? $this->sayfaAdi : "Böyle bir sayfa yok";
+                echo $sayfaadi; ?>
               </h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Dashboard v1</li>
+                <li class="breadcrumb-item active">............</li>
               </ol>
             </div><!-- /.col -->
           </div><!-- /.row -->
