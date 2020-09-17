@@ -15,6 +15,8 @@
 
 // Not ekledim Onurcum
 
+// TODO: Bunları yapmayı unutma
+
 const URL = 'https://numeko.bar/';
 const CORE = 'Core/';
 const CONTROLLERYOLU = 'controllers/';

@@ -11,6 +11,12 @@ class Auth
           @session_start();
         }
 
+        if (!isset($_SESSION['loggedIn'])) {
+          session_destroy();
+          header('location: ../login');
+          exit;
+        }
+
         // if ($logged == false) {
         //     session_destroy();
         //     header('location: ../login');

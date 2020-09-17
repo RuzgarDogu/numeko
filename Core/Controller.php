@@ -4,8 +4,8 @@ class Controller {
 
     function __construct() {
         $this->view = new View();
-        // Session::init();
-        Auth::handleLogin();
+        Session::init();
+        // Auth::handleLogin();
     }
 
     public function loadModel($name, $modelPath = 'models/') {

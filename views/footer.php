@@ -1,7 +1,8 @@
+<!-- content ends here -->
 </div>
-
-<div id="footer">
-    (C) Footer
+</section>
+</div>
+<!-- Content Wrapper END-->
 </div>
 
 </body>

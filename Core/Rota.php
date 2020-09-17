@@ -7,7 +7,7 @@ class Rota {
 
     private $_controllerPath = 'controllers/';
     private $_modelPath = 'models/';
-    private $_errorFile = 'error.php';
+    private $_errorFile = 'hata.php';
     private $_defaultFile = 'login.php';
 
     public function baslat()
@@ -108,9 +108,9 @@ class Rota {
 
     private function _error() {
         require $this->_controllerPath . $this->_errorFile;
-        $this->_controller = new Error();
-        $this->_controller->index();
-        return false;
+        $this->_controller = new Hata();
+        // $this->_controller->index();
+        // return false;
     }
 
 }

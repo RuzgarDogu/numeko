@@ -1,53 +1,71 @@
 <!doctype html>
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Test</title>
-    <link rel="stylesheet" href="<?php echo URL; ?>public/css/main.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="<?php echo URL; ?>node_modules/@fortawesome/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="<?php echo URL; ?>node_modules/bootstrap/dist/css/bootstrap.min.css" />
-
+    <link rel="stylesheet" href="<?php echo URL; ?>public/externallibs/adminlte/adminlte.min.css">
+    <link rel="stylesheet" href="<?php echo URL; ?>public/css/main.css" />
     <?php
     if (isset($this->css))
     {
         foreach ($this->css as $css)
         {
-            echo '<link rel="stylesheet" href="'.URL.'views/'.$css.'">';
+            echo '<link rel="stylesheet" href="'.URL.$css.'">';
         }
     }
     ?>
 
     <script type="text/javascript" src="<?php echo URL; ?>node_modules/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="<?php echo URL; ?>node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="<?php echo URL; ?>public/externallibs/adminlte/adminlte.js"></script>
     <script type="text/javascript" src="<?php echo URL; ?>public/js/main.js"></script>
 
+    </script>
     <?php
     if (isset($this->js))
     {
         foreach ($this->js as $js)
         {
-            echo '<script type="text/javascript" src="'.URL.'views/'.$js.'"></script>';
+            echo '<script type="text/javascript" src="'.URL.$js.'"></script>';
         }
     }
     ?>
 </head>
-<body>
+<body class="sidebar-mini layout-fixed">
+  <div class="wrapper">
+    <!-- Navbar -->
+    <?php require 'views/navbar.php'; ?>
+    <!-- Navbar END -->
+    <!-- Aside -->
+    <?php require 'views/aside.php'; ?>
+    <!-- Aside END -->
 
-<div id="header">
+    <!-- Content Wrapper -->
+    <div class="content-wrapper" style="min-height: 653px;">
+      <!-- Content Header -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0 text-dark">
+                <?php isset($this->sayfaAdi) ? $this->sayfaAdi : "Böyle bir sayfa yok" ?>
+              </h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active">Dashboard v1</li>
+              </ol>
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- Content Header END-->
 
-    <?php if (Session::get('loggedIn') == false):?>
-        <a href="<?php echo URL; ?>index">Index</a>
-        <a href="<?php echo URL; ?>help">Help</a>
-    <?php endif; ?>
-    <?php if (Session::get('loggedIn') == true):?>
-        <a href="<?php echo URL; ?>dashboard">Dashboard</a>
-
-        <?php if (Session::get('role') == 'owner'):?>
-        <a href="<?php echo URL; ?>user">Users</a>
-        <?php endif; ?>
-
-        <a href="<?php echo URL; ?>login/logout">Logout</a>
-    <?php else: ?>
-        <a href="<?php echo URL; ?>login">Login</a>
-    <?php endif; ?>
-</div>
-
-<div id="content">
+      <section class="content">
+        <div class="container-fluid">
+            <!-- content goes here -->

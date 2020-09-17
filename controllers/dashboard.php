@@ -4,13 +4,14 @@ class Dashboard extends Controller {
 
     function __construct() {
         parent::__construct();
-        // Auth::handleLogin();
+        Auth::handleLogin();
         $this->view->js = array('dashboard/js/dashboard.js');
     }
 
     function index()
     {
-        $this->view->render('dashboard/index');
+      $this->view->sayfaAdi = "Dashboard";
+      $this->view->render('dashboard/index');
     }
 
     function xhrInsert()
@@ -26,6 +27,11 @@ class Dashboard extends Controller {
     function xhrDeleteListing()
     {
         $this->model->xhrDeleteListing();
+    }
+
+    public function deneme()
+    {
+      $this->view->sonuclar = $this->model->deneme();
     }
 
 }
