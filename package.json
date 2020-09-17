@@ -1,6 +1,6 @@
 {
   "name": "numeko",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Numeko CRM",
   "main": "index.js",
   "scripts": {
