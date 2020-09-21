@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Honeywell Academy</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#5373f4">
+    <link rel="manifest" href="/manifest.json">
     <link rel="stylesheet" href="<?php echo URL; ?>node_modules/@fortawesome/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="<?php echo URL; ?>node_modules/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="<?php echo URL; ?>public/externallibs/adminlte/adminlte.min.css">
@@ -20,8 +22,10 @@
     ?>
 
     <script type="text/javascript" src="<?php echo URL; ?>node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="<?php echo URL; ?>public/externallibs/popper/popper.min.js"></script>
     <script type="text/javascript" src="<?php echo URL; ?>node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="<?php echo URL; ?>public/externallibs/adminlte/adminlte.js"></script>
+    <script type="text/javascript" src="<?php echo URL; ?>public/js/pwa.js"></script>
     <script type="text/javascript" src="<?php echo URL; ?>public/js/main.js"></script>
 
     </script>

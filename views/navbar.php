@@ -112,9 +112,10 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+        <!-- <a class="nav-link" id="btnAdd" href="#" role="button">
           <i class="fas fa-th-large"></i>
-        </a>
+        </a> -->
+        <button type="button" id="btnAdd">Uygulamayı Yükle</button>
       </li>
     </ul>
   </nav>

@@ -8,4 +8,11 @@ $(document).ready(function() {
     return false;
   })
 
+  const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone);
+  if (!isInStandaloneMode()) {
+    $('#btnAdd').prop('disabled', true);
+    $('#btnAdd').html('Uygulama Yüklendi');
+  }
+
+
 });

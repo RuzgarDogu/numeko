@@ -4,7 +4,7 @@ console.log("Trainers sayfasındayız");
 $(document).ready(function() {
 
   var tbl_trainersList;
-  var btn_editTrainer = '<button type="button" class="btn-sm btn-editTrainer btn btn-success"><i class="fas fa-pencil-alt" aria-hidden="true"></i></button>';
+  var btn_editTrainer = '<button type="button" class="btn-sm btn-editTrainer btn btn-default"><i class="text-danger fas fa-edit" aria-hidden="true"></i></button>';
 
   $.post('trainers/getTrainersList', function(data, textStatus, xhr) {})
   .done(function(d){
@@ -25,7 +25,7 @@ $(document).ready(function() {
           return exp
         }
       },
-      {"data":null},
+      {"data":null}
     ],
     "columnDefs": [
       {
