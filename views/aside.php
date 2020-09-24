@@ -23,10 +23,10 @@
               <ul id="solmenuul" class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Dashboard -->
                 <li class="nav-item">
-                  <a href="dashboard" class="nav-link">
+                  <a href="overview" class="nav-link">
                     <i class="nav-icon fas fa-chart-line"></i>
                     <p>
-                      Dashboard
+                      Overview
                       <span class="badge badge-info right">2</span>
                     </p>
                   </a>
@@ -78,10 +78,10 @@
                 <!-- Logbook END -->
                 <!-- Clients -->
                 <li class="nav-item">
-                  <a href="clients" class="nav-link">
+                  <a href="clientsportal" class="nav-link">
                     <i class="nav-icon fas fa-people-arrows"></i>
                     <p>
-                      Clients
+                      Clients Portal
                       <span class="badge badge-info right">2</span>
                     </p>
                   </a>

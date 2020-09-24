@@ -16,7 +16,7 @@ $(document).ready(function() {
       var tab1_table;
       var tab2_table;
       var tab3_table;
-      var btn_editTraining = '<button type="button" class="btn-sm btn-trainingedit btn btn-default" data-toggle="modal" data-target="#trainingEditModal"><i class="text-danger fas fa-edit" aria-hidden="true"></i></button>';
+      var btn_editTraining = '<button type="button" class="btn-sm btn-trainingedit btn btn-default" data-toggle="modal" data-target="#mdl-editTraining"><i class="text-danger fas fa-edit" aria-hidden="true"></i></button>';
 
       // Tablo 1
       $.post('logbook/getTab1', function(data, textStatus, xhr) {})
@@ -153,6 +153,100 @@ $(document).ready(function() {
         } else {
           tab1_table.search(selectedValue).draw();
         }
+    });
+
+    var logbookData;
+    // Edit Training
+    $(document).on('click', '.btn-trainingedit', function(event) {
+      var logbookData = tab1_table.row( $(this).closest('tr ') ).data()
+      console.log("logbookData",logbookData);
+
+        $('#e_trainee_box_fg').css('display','none');
+        $('#e_gerceklesen_check').prop('checked',true);
+
+        var thisid = logbookData.id;
+
+        let st = logbookData.status;
+        let trh = logbookData.training_date;
+        let tc = logbookData.training_code;
+        let cl = logbookData.client_name;
+        let ks = logbookData.participants;
+        let t1 = logbookData.trainer_name;
+        let cty = logbookData.city;
+        let trl = logbookData.traineelist;
+
+        $('#stati option').each(function(index, el) {
+            if ($(this).val()==st) {
+                $(this).attr('selected', true);
+            } else {
+                $(this).attr('selected', false);
+            }
+        });
+
+
+        $('#datum').val(trh);
+
+        $('#e_training_code option').each(function(index, el) {
+            if ($(this).val() == tc) {
+                $(this).attr('selected', true);
+            } else {
+                $(this).attr('selected', false);
+            }
+        });
+
+        $('#mdl-editTrainingLabel').text(cl+" ("+ks+" Katılımcı)");
+
+        $('#e_trainer1 option').each(function(index, el) {
+            if ($(this).text()==t1) {
+                $(this).attr('selected', true);
+            } else {
+                $(this).attr('selected', false);
+            }
+        });
+
+        $('#e_city option').each(function(index, el) {
+            if ($(this).text()==cty) {
+                $(this).attr('selected', true).siblings().removeAttr("selected");
+            }
+        });
+
+            let trltxt = "";
+            let sas = 1;
+            trl.forEach( function(element, index) {
+                let rowenta = sas == trl.length ? "" : "\n"
+                trltxt += element.trainee_name + rowenta;
+                sas++;
+            });
+
+            $('#e_trainee_box').text(trltxt);
+
+
+        $('#trainingid').val(thisid);
+
+        $('#trainingisil').on('click', function(event) {
+            if (confirm('Bu silinecek, emin misin?')) {
+              console.log("silinecek");
+                $.post('logbook/deleteTraining', {trainingid: thisid}, function(data, textStatus, xhr) {})
+                .done(function(evt){
+                    console.log(evt);
+                    location.reload();
+                });
+            }
+        });
+
+
+    });
+
+
+    $("input[name='e_tr_status']").on('change', function(event) {
+      let goster = $(this).val() == 1 ? 'none' : 'block';
+      $('#e_trainee_box_fg').css('display',goster);
+    });
+
+    $("input[name='tr_status']").on('change', function(event) {
+      let goster = $(this).val() == 2 ? 'block' : 'none';
+      console.log(goster);
+      $('#trainee_box_fg').css('display',goster);
     });
 
 });

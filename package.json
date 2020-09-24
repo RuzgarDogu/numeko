@@ -1,6 +1,6 @@
 {
   "name": "numeko",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Numeko CRM",
   "main": "index.js",
   "scripts": {
@@ -21,11 +21,10 @@
   "homepage": "https://github.com/RuzgarDogu/numeko#readme",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.14.0",
-    "@fullcalendar/core": "^5.3.1",
-    "@fullcalendar/daygrid": "^5.3.2",
     "bootstrap": "^4.5.2",
     "datatables.net": "^1.10.21",
     "datatables.net-bs4": "^1.10.21",
+    "highcharts": "^8.2.0",
     "jquery": "^3.5.1",
     "three": "^0.120.1",
     "vanta": "^0.5.19"

@@ -43,6 +43,16 @@ class Logbook_Model extends Model {
     return $this->db->lastInsertId();
   }
 
+  public function editTraining($datum,$e_training_code,$e_trainer1,$e_city,$stati,$trainingid)
+  {
+    $this->db->select("UPDATE `trainings` SET `training_date`='{$datum}',`training_code`={$e_training_code},`trainer1_id`={$e_trainer1},`city`={$e_city},`status`='{$stati}' WHERE `id`={$trainingid}");
+  }
+
+  public function deleteFromTrainingLog($trainingid)
+  {
+    $this->db->select("DELETE FROM `training_log` WHERE `training_id`={$trainingid}");
+  }
+
   public function addTrainee($trainingId,$v,$i,$cert,$zeroi)
   {
     $this->db->select("INSERT INTO `training_log`(`training_id`, `trainee_name`, `trainee_id`, `cert_no`) VALUES ({$trainingId},'{$v}',{$i},CONCAT('{$cert}',LPAD({$trainingId},3,0),'{$zeroi}'))");
@@ -52,6 +62,21 @@ class Logbook_Model extends Model {
   public function addToTrainingLog($traineeId)
   {
     $this->db->select("UPDATE `training_log` SET `qr_code`=CONCAT(MID(`cert_no`, 4, 3),LEFT(ASCII(LEFT(`trainee_name`,1)),2),RIGHT(`cert_no`,2),RIGHT(ASCII(RIGHT(`trainee_name`,1)),2)) WHERE id = {$traineeId}");
+  }
+
+  public function deleteTrainingLog($trainingid)
+  {
+    $this->db->select("DELETE FROM `training_log` WHERE `training_id`={$trainingid}");
+  }
+
+  public function deleteTraining($trainingid)
+  {
+      $this->db->select("DELETE FROM `trainings` WHERE `id`={$trainingid}");
+  }
+
+  public function getParticipants($id)
+  {
+    return $this->db->select("SELECT `id`, `trainee_name`, `trainee_id`, `cert_no` FROM `training_log` WHERE `training_id` = {$id}");
   }
 
   public function getTab1()

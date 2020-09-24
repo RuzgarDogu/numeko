@@ -1,0 +1,59 @@
+<?php
+
+class Clientsportal extends Controller {
+
+
+    function __construct() {
+
+
+        parent::__construct();
+
+        $this->render = Session::get("role") == "client" ? "index" : "clientindex";
+        $this->js = Session::get("role") == "client" ? "clientsportal" : "clientindex";
+
+        $this->view->css = array(
+          'node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css'
+        );
+        $this->view->js = array(
+          'node_modules/datatables.net/js/jquery.dataTables.min.js',
+          'node_modules/datatables.net-bs4/js/dataTables.bootstrap4.min.js',
+          'views/clientsportal/js/'.$this->js.'.js'
+        );
+    }
+
+    function index() {
+      $this->view->sayfaAdi = '<i class="text-info mr-2 nav-icon fas fa-people-arrows"></i> Clients Portal';
+      $this->view->render('clientsportal/'.$this->render);
+    }
+
+    public function getClientLogData()
+    {
+      $id = $_POST['id'];
+      $clientTrainingData = $this->model->getClientLogData($id);
+      for ($i=0; $i < count($clientTrainingData) ; $i++) {
+        $clientTrainingData[$i]["participants"] = $this->model->getParticipants($clientTrainingData[$i]["id"]);
+      }
+      header('Content-Type: application/json');
+      echo json_encode($clientTrainingData);
+    }
+
+    public function approveTraining()
+    {
+      $tid = $_POST['tid'];
+      $isimlistesi = json_decode($_POST['isimlistesi']);
+      $verivar = $_POST['verivar'];
+
+      if ($verivar == 1) {
+        $this->model->deleteExistingTrainees($tid);
+      }
+
+      $i = 1;
+      foreach ($isimlistesi as $value) {
+        $this->model->insertNewList($tid,$value,$i);
+        $i++;
+      }
+
+      echo json_encode($this->model->changeStatus($tid));
+    }
+
+}

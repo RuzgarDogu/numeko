@@ -54,12 +54,58 @@ class Logbook extends Controller {
   				$i++;
   			}
   		}
+      header('location: ../logbook');
+    }
+
+    public function editTraining()
+    {
+      $trainingid = $_POST['trainingid'];
+    	$stati = $_POST['stati'];
+    	$datum = $_POST['datum'];
+    	$e_training_code = $_POST['e_training_code'];
+    	$e_trainer1 = $_POST['e_trainer1'];
+    	$e_city = $_POST['e_city'];
+    	$e_tr_status = $_POST['e_tr_status'];
+    	$e_trainee_box = $_POST['e_trainee_box'];
+
+    	$trainees = explode("\n", $e_trainee_box);
+
+      $this->model->editTraining($datum,$e_training_code,$e_trainer1,$e_city,$stati,$trainingid);
+
+    	if ($e_tr_status == "0") {
+        $this->model->deleteFromTrainingLog($trainingid);
+    		$i = 1;
+    		$cert = "NMK";
+
+    		foreach ($trainees as $v) {
+    			$v = mb_strtoupper($v);
+    			if (strlen(trim($v)) != 0) {
+    				$zeroi = sprintf("%02d", $i);
+            $traineeId = $this->model->addTrainee($trainingid,$v,$i,$cert,$zeroi);
+            $this->model->addToTrainingLog($traineeId);
+    				$i++;
+    			}
+    		}
+    	}
+
+      header('location: ../logbook');
+    }
+
+    public function deleteTraining()
+    {
+      $trainingid = $_POST['trainingid'];
+      $this->model->deleteTrainingLog($trainingid);
+      $this->model->deleteTraining($trainingid);
     }
 
     public function getTab1()
     {
+      $tab1Data = $this->model->getTab1();
+      for ($i=0; $i < count($tab1Data); $i++) {
+        $tab1Data[$i]["traineelist"] = $this->model->getParticipants($tab1Data[$i]["id"]);
+      }
       header('Content-Type: application/json');
-      echo json_encode($this->model->getTab1());
+      echo json_encode($tab1Data);
     }
 
     public function getTab2()
