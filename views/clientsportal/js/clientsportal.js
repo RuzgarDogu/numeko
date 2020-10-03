@@ -83,7 +83,9 @@ $(document).ready(function() {
       $('#mdl-traineeListLabel').html("<strong>"+trainingData.training_name+"</strong> Eğitimi")
       let tb_traineeList = ""
       trainingData.participants.forEach((item, i) => {
-        let certno = item.cert_no != "" ? "<span class='text-success'>"+item.cert_no+"</span>" : "<span class='text-danger'>Henüz Oluşturulmadı</span>";
+
+        let certbox = "<span class='text-success mr-2'>"+item.cert_no+"</span><button data-toggle='modal' data-target='#mdl-certificate' data-tid='"+trainingData.id+"' data-id='"+item.id+"' class='btn btn-outline-primary btn-xs viewcert'>view</button>";
+        let certno = item.cert_no != "" ? certbox : "<span class='text-danger'>Henüz Oluşturulmadı</span>";
         tb_traineeList += "<tr>";
           tb_traineeList += "<td>"+item.trainee_id+"</td>";
           tb_traineeList += "<td>"+item.trainee_name+"</td>";
@@ -306,5 +308,96 @@ $(document).on('click', '#btn-saveList', function(event) {
   })
 
 });
+
+
+
+
+function demoFromHTML(pagesource) {
+    var pdf = new jsPDF('l', 'pt', 'a4');
+    // source can be HTML-formatted string, or a reference
+    // to an actual DOM element from which the text will be scraped.
+    source = pagesource;
+
+    // we support special element handlers. Register them with jQuery-style
+    // ID selector for either ID or node name. ("#iAmID", "div", "span" etc.)
+    // There is no support for any other type of selectors
+    // (class, of compound) at this time.
+    specialElementHandlers = {
+        // element with id of "bypass" - jQuery style selector
+        '#bypassme': function (element, renderer) {
+            // true = "handled elsewhere, bypass text extraction"
+            return true
+        }
+    };
+    margins = {
+        top: 0,
+        bottom: 0,
+        left: 0,
+        width: pdf.internal.pageSize.width,
+        height: pdf.internal.pageSize.height,
+        // width: 1190.56,
+        // height: 1683.78,
+        // right: -300
+    };
+    // all coords and widths are in jsPDF instance's declared units
+    // 'inches' in this case
+    console.log("pdf",pdf.internal.pageSize.width);
+    console.log("pdf",pdf.internal.pageSize.height);
+    pdf.addHTML(
+    source, // HTML string or DOM elem ref.
+    margins.left, // x coord
+    margins.top,
+    { // y coord
+        'width': margins.width, // max width of content on PDF
+        'height': margins.height, // max width of content on PDF
+        'elementHandlers': specialElementHandlers
+    },
+
+    function (dispose) {
+        // dispose: object with X, Y of the last line add to the PDF
+        //          this allow the insertion of new lines after html
+        pdf.save('Test.pdf');
+    }, margins);
+}
+
+
+$(document).on('click', '.viewcert', function(arguments) {
+  console.log($(this).data("id"));
+  let id = $(this).data("id");
+  let tid = $(this).data("tid");
+  $('#mdl-traineeList').modal('hide');
+
+  $('#cert-no').html("");
+  $('#cert-code').html("");
+  $('#cert-name').html("");
+  $('#cert-egitmen1').html("");
+  $('#cert-egitmen2').html("");
+
+
+  $.post('clientsportal/getCertificate', {id: id, tid:tid}, function(data, textStatus, xhr) {})
+  .done(function(d){
+    $('#cert-qrcode').html("");
+    console.log("cert_data",d);
+
+    $('#cert-no').html(d.cert_no);
+    $('#cert-code').html(d.training_code+" - "+d.training_name);
+    $('#cert-name').html(d.trainee_name);
+    $('#cert-egitmen1').html(d.trainee1);
+    $('#cert-egitmen2').html(d.trainee2);
+
+    var qrcode = new QRCode(document.getElementById("cert-qrcode"),{
+      text: "http://argeparkonline.com/"+d.qr_code,
+      width: 75,
+      height: 75
+    });
+  });
+
+})
+
+
+$(document).on('click', '#printcertificate', function(arguments) {
+  demoFromHTML($('#printArea')[0]);
+})
+
 
 });

@@ -5,7 +5,11 @@ class Dashboard extends Controller {
     function __construct() {
         parent::__construct();
         Auth::handleLogin();
-        $this->view->js = array('dashboard/js/dashboard.js');
+        $this->view->js = array(
+          'views/dashboard/js/dashboard.js',
+          'node_modules/html2canvas/dist/html2canvas.min.js',
+          'public/externallibs/jspdf/jspdf.umd.min.js'
+        );
     }
 
     function index()
@@ -33,5 +37,15 @@ class Dashboard extends Controller {
     {
       $this->view->sonuclar = $this->model->deneme();
     }
+
+    public function test()
+    {
+      $param = $_POST['param1'];
+      $html = Pdfmake::generateHTML($param);
+      header('Content-Type: application/json');
+      echo json_encode($html);
+    }
+
+
 
 }

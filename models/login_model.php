@@ -28,7 +28,11 @@ class Login_Model extends Model
             Session::set('userid', $data['userid']);
             Session::set('username', $u_name);
             // echo Session::get('loggedIn');
-            header('location: ../dashboard');
+            if ($data['role'] == "client") {
+              header('location: ../clientinfo');
+            } else {
+              header('location: ../overview');
+            }
         } else {
             header('location: ../login');
         }

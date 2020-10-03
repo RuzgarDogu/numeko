@@ -52,4 +52,10 @@ class Clientsportal_Model extends Model {
       return "success";
     }
 
+    public function getCertificate($id,$tid)
+    {
+      $result = $this->db->select("SELECT tl.trainee_name, tl.cert_no, tl.qr_code, t.training_date, l.training_code, l.training_name, tr1.trainer_name as trainee1, tr2.trainer_name as trainee2 FROM training_log tl LEFT JOIN trainings t ON t.id = tl.training_id LEFT JOIN training_list l ON l.id = t.training_code LEFT JOIN trainers tr1 ON t.trainer1_id = tr1.id LEFT JOIN trainers tr2 ON t.trainer2_id = tr2.id WHERE tl.id = {$id} AND tl.training_id = {$tid}");
+      return $result[0];
+    }
+
 }

@@ -2,6 +2,10 @@
 
 class Users extends Controller {
 
+  public static $_roles = array('owner','admin','client');
+  public static $_pageHeading = "Users";
+  public static $_pageIcon = "fas fa-user-friends";
+
     function __construct() {
         parent::__construct();
         $this->view->css = array(
@@ -15,7 +19,6 @@ class Users extends Controller {
     }
 
     function index() {
-        $this->view->sayfaAdi = "Users";
         $this->view->clients = $this->model->getClients();
         $this->view->render('users/index');
     }
@@ -92,6 +95,44 @@ class Users extends Controller {
         $this->model->changePassword($uid,$pwd);
       }
       header('location: ../users');
+    }
+
+    public function getCurrentUserDetails()
+    {
+      $uid = Session::get("userid");
+      $data = $this->model->getCurrentUserDetails($uid);
+      header('Content-Type: application/json');
+      echo json_encode($data[0]);
+    }
+
+    public function editUserProfile()
+    {
+      if(isset($_POST['inp-name'])){
+        $name = $_POST['inp-name'];
+      }
+      if(isset($_POST['inp-surname'])){
+        $surname = $_POST['inp-surname'];
+      }
+      if(isset($_POST['inp-email'])){
+        $email = $_POST['inp-email'];
+      }
+      if(isset($_POST['inp-telephone'])){
+        $telephone = $_POST['inp-telephone'];
+      }
+      if(isset($_POST['inp-username'])){
+        $username = $_POST['inp-username'];
+      }
+      if(isset($_POST['inp-pwdProfile']) && $_POST['inp-pwdProfile'] != ""){
+        $pwd = Hash::create('sha256', $_POST['inp-pwdProfile'], HASH_PASSWORD_KEY);
+      }
+
+      $uri = $_POST['uri'];
+      $uid = Session::get("userid");
+      $this->model->editUserProfile($uid,$name,$surname,$email,$telephone,$username);
+      if ($pwd) {
+        $this->model->changePassword($uid,$pwd);
+      }
+      header('location: ..'.$uri);
     }
 
 }

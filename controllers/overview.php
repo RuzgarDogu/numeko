@@ -2,6 +2,10 @@
 
 class Overview extends Controller {
 
+  public static $_roles = array('owner','admin');
+  public static $_pageHeading = "Overview";
+  public static $_pageIcon = "fas fa-chart-line";
+
     function __construct() {
         parent::__construct();
         $this->view->css = array(

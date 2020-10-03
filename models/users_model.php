@@ -47,4 +47,14 @@ class Users_Model extends Model {
       $this->db->select("UPDATE `user` SET `password`='{$pwd}' WHERE `userid`={$uid}");
     }
 
+    public function getCurrentUserDetails($uid)
+    {
+      return $this->db->select("SELECT u.login, u.user_name, u.user_surname, u.telefon, u.email, c.client_name FROM USER u LEFT JOIN clientuser cu ON cu.user_id = u.userid LEFT JOIN clients c ON c.id = cu.client_id WHERE u.userid = {$uid}");
+    }
+
+    public function editUserProfile($uid,$name,$surname,$email,$telephone,$username)
+    {
+      $this->db->select("UPDATE `user` SET `login`='{$username}', `user_name`='{$name}', `user_surname`='{$surname}', `telefon`='{$telephone}', `email`='{$email}' WHERE `userid`=$uid");
+    }
+
 }

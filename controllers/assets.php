@@ -2,6 +2,10 @@
 
 class Assets extends Controller {
 
+  public static $_roles = array('owner','admin');
+  public static $_pageHeading = "Assets";
+  public static $_pageIcon = "fas fa-fire-extinguisher";
+
     function __construct() {
         parent::__construct();
         $this->view->css = array(
@@ -15,7 +19,6 @@ class Assets extends Controller {
     }
 
     function index() {
-      $this->view->sayfaAdi = '<i class="text-info mr-2 nav-icon fas fa-fire-extinguisher"></i> Assets';
       $this->view->assetTypes = $this->model->assetTypes();
       $this->view->render('assets/index');
     }

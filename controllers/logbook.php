@@ -2,6 +2,10 @@
 
 class Logbook extends Controller {
 
+  public static $_roles = array('owner','admin','client');
+  public static $_pageHeading = "Logbook";
+  public static $_pageIcon = "fas fa-book";
+
     function __construct() {
         parent::__construct();
         $this->view->css = array(
@@ -15,7 +19,6 @@ class Logbook extends Controller {
     }
 
     function index() {
-        $this->view->sayfaAdi = '<i class="text-info mr-2 nav-icon fas fas fa-book"></i> Logbook';
         $this->view->clients = $this->model->getClients();
         $this->view->trainers = $this->model->getTrainers();
         $this->view->cities = $this->model->getCities();

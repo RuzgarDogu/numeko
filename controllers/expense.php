@@ -2,6 +2,10 @@
 
 class Expense extends Controller {
 
+  public static $_roles = array('owner','admin');
+  public static $_pageHeading = "Expense";
+  public static $_pageIcon = "fas fa-money-bill-wave";
+
     function __construct() {
         parent::__construct();
         $this->view->css = array(
@@ -15,7 +19,6 @@ class Expense extends Controller {
     }
 
     function index() {
-        $this->view->sayfaAdi = '<i class="text-info mr-2 nav-icon fas fa-money-bill-wave"></i> Expense';
         $this->view->render('expense/index');
     }
 

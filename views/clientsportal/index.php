@@ -1,4 +1,3 @@
-
 <div class="card">
   <div class="card-header border-0 bg-info">
     <div class="d-flex justify-content-between">
@@ -57,7 +56,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" style="max-height: 600px; overflow-y: scroll;">
         <div class="tab-content" id="pills-tabContent">
           <div class="tab-pane fade show active" id="pills-trList" role="tabpanel" aria-labelledby="pills-trList-tab">
             <table class="table table-sm" id="traineeCheckList"></table>
@@ -97,7 +96,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body"  style="max-height: 600px; overflow-y: scroll;">
         <table class="table table-striped">
           <thead>
             <tr>
@@ -113,6 +112,67 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Cert Modal -->
+<div class="modal fade" id="mdl-certificate" tabindex="-1" role="dialog" aria-labelledby="mdl-certificateLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document" style="height: 595.28px; width: 843.89px; max-width: 843.89px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="mdl-certificateLabel">Sertifika</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="printArea">
+        <div class="card" id="crd-print">
+          <div class="card-body">
+            <div class="row">
+              <div id="cert-no" class="col-sm-2 offset-sm-2 pl-4 pt-2">82323</div>
+              <div class="col-sm-2 offset-sm-6" id="cert-qrcode"></div>
+            </div>
+            <!-- <div class="row mt-2"></div> -->
+            <div class="row mt-4">
+              <div id="cert-code" class="col-sm-4 offset-sm-4 text-center text-xs">HS01 - YÜKSEKTE GÜVENLİ ÇALIŞMA</div>
+            </div>
+            <div class="row mt-5">
+              <div class="col-sm-12 mt-4">
+                <h2 id="cert-name" class="text-center">Yunus Emre Şahin</h2>
+              </div>
+            </div>
+            <div class="row mt-5"></div>
+            <div class="row mt-5"></div>
+            <div class="row mt-3">
+              <div class="col-sm-2 offset-sm-3">
+                <h6 id="cert-egitmen1" class="text-center text-xs">Semi Karabay</h6>
+              </div>
+              <div class="col-sm-2">
+                <h6 id="cert-egitmen2" class="text-center text-xs">Ahmet Yılmazer</h6>
+              </div>
+              <div class="col-sm-2">
+                <h6 class="text-center"></h6>
+              </div>
+            </div>
+            <!-- <div class="row">
+              <div class="col-sm-4">
+                <p class="text-xs"><strong>Eğitim Başarı Belgesi</strong></p>
+                <p class="text-xs"><strong>HS01 - Yüksekte Güvenli Çalışma</strong></p>
+                <p class="text-xs"><strong>29.08.2020</strong></p>
+              </div>
+              <div class="col-sm-4"><img src="public/images\Numeko_logo_PNG_min.png" alt="Numeko Logo" class="brand-image" style="opacity: .8"></div>
+              <div class="col-sm-4" id="qrcode"></div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button id="printcertificate" type="button" class="btn btn-primary">Save as PDF</button>
       </div>
     </div>
   </div>

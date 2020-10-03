@@ -178,3 +178,41 @@ span.round-tab:hover {
         left: 35%;
     }
 }
+.fc-daygrid-event-harness {
+    cursor: pointer;
+}
+#mdl-editProfile .row {
+    border-bottom: solid 3px #dadada;
+    margin-bottom: 20px;
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #fff;
+    background-color: #17a2b8;
+}
+#tb-companyInfo .editSingleInfo span {
+    background: #fff;
+}
+#tb-companyInfo .editSingleInfo span:hover {
+    background: #f9f9f9;
+    cursor: pointer;
+}
+#printArea .card-body {
+  background: transparent !important;
+}
+#printArea {
+  height: 595.28px !important;
+  width: 841.89px !important;
+  /* background: #f5f5f5 !important; */
+  background-image: url("../../public/images/cert/numeko_certificate.jpg");
+  padding: 30px !important;
+}
+div#crd-print {
+    height: 100%;
+    /* border: solid 3px #a4a4a4;
+    border-radius: 0px !important; */
+    background: transparent;
+}
+#cert-name {
+  font-family: 'Berkshire Swash', cursive;
+  font-size: 40px;
+}

@@ -2,6 +2,10 @@
 
 class Trainers extends Controller {
 
+  public static $_roles = array('owner','admin','client');
+  public static $_pageHeading = "Trainers";
+  public static $_pageIcon = "fas fa-chalkboard-teacher";
+
     function __construct() {
         parent::__construct();
         $this->view->css = array(
@@ -15,7 +19,6 @@ class Trainers extends Controller {
     }
 
     function index() {
-        $this->view->sayfaAdi = '<i class="text-info mr-2 nav-icon fas fa-chalkboard-teacher"></i> Trainers';
         $this->view->trainingList = $this->model->getTrainingList();
         $this->view->render('trainers/index');
     }

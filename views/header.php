@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#5373f4">
     <link rel="manifest" href="/manifest.json">
+    <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo URL; ?>node_modules/@fortawesome/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="<?php echo URL; ?>node_modules/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="<?php echo URL; ?>public/externallibs/adminlte/adminlte.min.css">
@@ -61,10 +62,10 @@
               </h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
-              <ol class="breadcrumb float-sm-right">
+              <!-- <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
                 <li class="breadcrumb-item active">............</li>
-              </ol>
+              </ol> -->
             </div><!-- /.col -->
           </div><!-- /.row -->
         </div><!-- /.container-fluid -->

@@ -2,6 +2,9 @@
 
 class Clientsportal extends Controller {
 
+  public static $_roles = array('owner','admin','client');
+  public static $_pageHeading = "Trainings";
+  public static $_pageIcon = "fas fa-people-arrows";
 
     function __construct() {
 
@@ -17,12 +20,14 @@ class Clientsportal extends Controller {
         $this->view->js = array(
           'node_modules/datatables.net/js/jquery.dataTables.min.js',
           'node_modules/datatables.net-bs4/js/dataTables.bootstrap4.min.js',
+          'public/externallibs/qrcodeJS/qrcode.min.js',
+          'node_modules/html2canvas/dist/html2canvas.min.js',
+          'public/externallibs/jspdf/jspdf.umd.min.js',
           'views/clientsportal/js/'.$this->js.'.js'
         );
     }
 
     function index() {
-      $this->view->sayfaAdi = '<i class="text-info mr-2 nav-icon fas fa-people-arrows"></i> Clients Portal';
       $this->view->render('clientsportal/'.$this->render);
     }
 
@@ -54,6 +59,14 @@ class Clientsportal extends Controller {
       }
 
       echo json_encode($this->model->changeStatus($tid));
+    }
+
+    public function getCertificate()
+    {
+      $id = $_POST['id'];
+      $tid = $_POST['tid'];
+      header('Content-Type: application/json');
+      echo json_encode($this->model->getCertificate($id,$tid));
     }
 
 }
