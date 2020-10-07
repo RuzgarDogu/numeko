@@ -15,7 +15,8 @@ class Clientsportal extends Controller {
         $this->js = Session::get("role") == "client" ? "clientsportal" : "clientindex";
 
         $this->view->css = array(
-          'node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css'
+          'node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css',
+          'node_modules/select2/dist/css/select2.min.css'
         );
         $this->view->js = array(
           'node_modules/datatables.net/js/jquery.dataTables.min.js',
@@ -23,6 +24,7 @@ class Clientsportal extends Controller {
           'public/externallibs/qrcodeJS/qrcode.min.js',
           'node_modules/html2canvas/dist/html2canvas.min.js',
           'public/externallibs/jspdf/jspdf.umd.min.js',
+          'node_modules/select2/dist/js/select2.min.js',
           'views/clientsportal/js/'.$this->js.'.js'
         );
     }
@@ -33,7 +35,11 @@ class Clientsportal extends Controller {
 
     public function getClientLogData()
     {
-      $id = $_POST['id'];
+      if (isset($_POST['uid'])) {
+        $id = $this->model->getClientIdFromUserId($_POST['uid']);
+      } else {
+        $id = $_POST['id'];
+      }
       $clientTrainingData = $this->model->getClientLogData($id);
       for ($i=0; $i < count($clientTrainingData) ; $i++) {
         $clientTrainingData[$i]["participants"] = $this->model->getParticipants($clientTrainingData[$i]["id"]);
@@ -67,6 +73,12 @@ class Clientsportal extends Controller {
       $tid = $_POST['tid'];
       header('Content-Type: application/json');
       echo json_encode($this->model->getCertificate($id,$tid));
+    }
+
+    public function getAllClients()
+    {
+      header('Content-Type: application/json');
+      echo json_encode($this->model->getAllClients());
     }
 
 }

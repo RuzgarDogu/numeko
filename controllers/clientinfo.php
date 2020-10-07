@@ -2,7 +2,7 @@
 
 class Clientinfo extends Controller {
 
-  public static $_roles = array('owner','admin','client');
+  public static $_roles = array('client');
   public static $_pageHeading = "Client Info";
   public static $_pageIcon = "fas fa-info-circle";
 

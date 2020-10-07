@@ -11,14 +11,14 @@ $(document).ready(function() {
   });
 
 
-  const getClientData = (id) => {
+  const getClientData = (uid) => {
 
     var tbl_clientData;
     var btn_approve = '<button type="button" class="btn-xs btn-block btn-approveTraining btn btn-success" data-toggle="modal" data-target="#mdl-approve">Approve</button>';
     var btn_list = '<button type="button" class="btn-xs btn-block btn-traineeList btn btn-info" data-toggle="modal" data-target="#mdl-traineeList">List</button>';
 
 
-    $.post('clientsportal/getClientLogData', {id: id}, function(data, textStatus, xhr) {})
+    $.post('clientsportal/getClientLogData', {uid: uid}, function(data, textStatus, xhr) {})
     .done(function(data){
       console.log(data);
       $('#spn-compName').html(data[0].client_name)

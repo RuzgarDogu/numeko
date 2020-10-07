@@ -4,7 +4,7 @@ $m = $this->authorized;
 ?>
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="dashboard" class="brand-link-new">
+        <a href="overview" class="brand-link-new">
           <img src="public/images\Numeko_logo_PNG_min.png" alt="Numeko Logo" class="brand-image" style="opacity: .8">
           <!-- <span class="brand-text font-weight-light">Numeko CRM</span> -->
         </a>
