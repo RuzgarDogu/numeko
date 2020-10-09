@@ -41,5 +41,6 @@ const JWT_SECRET = '317d9e66ce8ece72';
 const HASH_PASSWORD_KEY = 'Wr15oR56';
 const HASH_GENERAL_KEY = '11qqaaZZ';
 
-const BYPASS = array('/login','/','/login/run','/login/logout');
+const BYPASSLOGIN = array('/login','/','/login/run','/login/logout','/checkcert/cert');
+const BYPASSCERT = array('login','checkcert');
 const ROLES = array('default','admin','owner','editor','client');

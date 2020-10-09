@@ -2,7 +2,7 @@
 
 class Logbook extends Controller {
 
-  public static $_roles = array('owner','admin','client');
+  public static $_roles = array('owner','admin');
   public static $_pageHeading = "Logbook";
   public static $_pageIcon = "fas fa-book";
 

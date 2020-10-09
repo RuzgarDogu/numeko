@@ -26,7 +26,7 @@ class Controller {
     public function getAuthorized()
     {
       $result = null;
-      if (!in_array($_SERVER['REQUEST_URI'], BYPASS)) {
+      if (!in_array($_SERVER['REQUEST_URI'], BYPASSLOGIN)) {
         if (isset(get_called_class()::$_roles)) {
           $result =  $this->auth->setRoles(get_called_class()::$_roles);
         } else {

@@ -3,7 +3,7 @@
 class Clientsportal extends Controller {
 
   public static $_roles = array('owner','admin','client');
-  public static $_pageHeading = "Trainings";
+  public static $_pageHeading = "Company Trainings";
   public static $_pageIcon = "fas fa-people-arrows";
 
     function __construct() {

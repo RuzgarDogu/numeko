@@ -2,7 +2,7 @@ $(document).ready(function() {
   console.log("Dashboard js sayfası");
 
 
-  function demoFromHTML(pagesource) {
+  function createPdf(pagesource) {
       var pdf = new jsPDF('l', 'pt', 'a4');
       // source can be HTML-formatted string, or a reference
       // to an actual DOM element from which the text will be scraped.
@@ -67,7 +67,7 @@ $.post('dashboard/test', {param1: 'Deneme Metni'}, function(data, textStatus, xh
   $('#appendable').append(eleman);
 
 $(document).on('click', '#printcertificate', function(arguments) {
-  demoFromHTML(eleman);
+  createPdf(eleman);
 })
 
 });

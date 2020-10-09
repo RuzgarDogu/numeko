@@ -312,7 +312,7 @@ $(document).on('click', '#btn-saveList', function(event) {
 
 
 
-function demoFromHTML(pagesource) {
+function createPdf(pagesource) {
     var pdf = new jsPDF('l', 'pt', 'a4');
     // source can be HTML-formatted string, or a reference
     // to an actual DOM element from which the text will be scraped.
@@ -354,9 +354,10 @@ function demoFromHTML(pagesource) {
     },
 
     function (dispose) {
+      let certfilename = "Sertifika_"+$('#cert-no').text();
         // dispose: object with X, Y of the last line add to the PDF
         //          this allow the insertion of new lines after html
-        pdf.save('Test.pdf');
+        pdf.save(certfilename);
     }, margins);
 }
 
@@ -378,7 +379,8 @@ $(document).on('click', '.viewcert', function(arguments) {
   .done(function(d){
     $('#cert-qrcode').html("");
     console.log("cert_data",d);
-
+    let url = window.location.hostname;
+    console.log("url",window.location.hostname);
     $('#cert-no').html(d.cert_no);
     $('#cert-code').html(d.training_code+" - "+d.training_name);
     $('#cert-name').html(d.trainee_name);
@@ -386,7 +388,7 @@ $(document).on('click', '.viewcert', function(arguments) {
     $('#cert-egitmen2').html(d.trainee2);
 
     var qrcode = new QRCode(document.getElementById("cert-qrcode"),{
-      text: "http://argeparkonline.com/"+d.qr_code,
+      text: url+"/checkcert/cert/"+d.qr_code,
       width: 75,
       height: 75
     });
@@ -396,7 +398,9 @@ $(document).on('click', '.viewcert', function(arguments) {
 
 
 $(document).on('click', '#printcertificate', function(arguments) {
-  demoFromHTML($('#printArea')[0]);
+  // let isim = $('#cert-name').text()//.toLowerCase();
+  // console.log("isim",isim);
+  createPdf($('#printArea')[0]);
 })
 
 
